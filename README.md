@@ -8,6 +8,7 @@ npm i vue-fitd
 
 ## Get Start
 ```vue
+// example.vue
 <template lang='jade'>
 section
   fit-input
