@@ -1,0 +1,25 @@
+{
+  "name": "vue-fitd",
+  "version": "0.0.0",
+  "description": "Vue UI Library & FIT Design",
+  "main": "dist/index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dafrok/vue-fitd.git"
+  },
+  "keywords": [
+    "vue",
+    "fit",
+    "baidu",
+    "fitd",
+    "vue-fitd"
+  ],
+  "author": "Dafrok",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dafrok/vue-fitd/issues"
+  },
+  "homepage": "https://github.com/Dafrok/vue-fitd#readme"
+}
