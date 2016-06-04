@@ -1,18 +1,32 @@
 <template lang="jade">
 button(:class="classes")
   div(class="button-container")
-    slot(name="addon-left")
-    i(class="fa fa-trash-o btn-addon-left")
+    // slot(name="addon-left")
+    i(:class="addonLeftClass", v-if="addonLeft")
     div(class="text-child")
       slot
-    i(class="fa fa-trash-o btn-addon-right")
-    slot(name="addon-right")
+    i(:class="addonRightClass", v-if="addonRight")
+    // slot(name="addon-right")
 </template>
 
 <script>
 export default {
-  props: ['type', 'disabled', 'loading', 'rounded', 'size', 'active'],
+  props: ['type', 'disabled', 'loading', 'rounded', 'size', 'active', 'addon-left', 'addon-right'],
   computed: {
+    addonLeftClass () {
+      return {
+        'fa': this.addonLeft,
+        [`fa-${this.addonLeft}`]: this.addonLeft,
+        'btn-addon-left': this.addonLeft
+      }
+    },
+    addonRightClass () {
+      return {
+        'fa': this.addonRight,
+        [`fa-${this.addonRight}`]: this.addonRight,
+        'btn-addon-right': this.addonRight
+      }
+    },
     classes () {
       const size = {
         Normal: 'nm',
@@ -42,8 +56,8 @@ export default {
 @font-face
 .fit-button ._global
   font-family 'fit-button'
-  src url("../../font/fit-button.eot?5jskou")
-  src url("../../font/fit-button.eot?5jskou#iefix") format("embedded-opentype"), url("../../font/fit-button.ttf?5jskou") format("truetype"), url("../../font/fit-button.woff?5jskou") format("woff"), url("../../font/fit-button.svg?5jskou#fit-button") format("svg")
+  // src url("../../font/fit-button.eot?5jskou")
+  // src url("../../font/fit-button.eot?5jskou#iefix") format("embedded-opentype"), url("../../font/fit-button.ttf?5jskou") format("truetype"), url("../../font/fit-button.woff?5jskou") format("woff"), url("../../font/fit-button.svg?5jskou#fit-button") format("svg")
   font-weight normal
   font-style normal
 

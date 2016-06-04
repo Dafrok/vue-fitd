@@ -13,9 +13,9 @@ layout-global
       layout-col(span="8")
         fit-button default
         fit-button(type="primary") primary
-        fit-button(type="success", size="lg") success
-        fit-button(type="warning") warning
-        fit-button(type="danger", size="sm") danger
+        fit-button(type="success", size="lg", addon-left="trash-o") success
+        fit-button(type="warning", addon-right="plus") warning
+        fit-button(type="danger", size="sm", addon-left="trash", addon-right="plus-circle") danger
     layout-col(span="8")
         fit-input(label="This is placeholder.", highlight, direction="left")
 </template>
