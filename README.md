@@ -1,8 +1,18 @@
 # vue-fitd
 
-## Components
+## Get Start
 
-###
+```vue
+<script>
+import {FitButton} from 'vue-fitd'
+export default {
+  template: `<FitButton>Button</Button>`
+  components: {
+    fitButton: FitButton
+  }
+}
+</script>
+```
 
 ## Build Setup
 
