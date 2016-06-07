@@ -16,13 +16,21 @@ layout-global
         fit-button(type="success", size="lg", addon-left="trash-o") success
         fit-button(type="warning", addon-right="plus") warning
         fit-button(type="danger", size="sm", addon-left="trash", addon-right="plus-circle") danger
+        button-group
+          fit-button(type="primary") foo
+          fit-button(type="dark") bar
+          fit-button(type="success") baz
+        button-group(vertical)
+          fit-button(type="primary") foo
+          fit-button(type="dark") bar
+          fit-button(type="success") baz
     layout-col(span="8")
         fit-input(label="This is placeholder.", highlight, direction="left")
 </template>
 
 <script>
 import {LayoutGlobal, LayoutGlobalHeader, LayoutGlobalFooter, LayoutGlobalSidebar, LayoutGlobalSection, LayoutRow, LayoutCol
-  , FitButton, FitInput} from './components/index.js'
+  , FitButton, ButtonGroup, FitInput} from './components/index.js'
 
 export default {
   components: {
@@ -34,7 +42,8 @@ export default {
     layoutRow: LayoutRow,
     layoutCol: LayoutCol,
     fitButton: FitButton,
-    fitInput: FitInput
+    fitInput: FitInput,
+    buttonGroup: ButtonGroup
   }
 }
 </script>
