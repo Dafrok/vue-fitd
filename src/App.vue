@@ -7,14 +7,18 @@ layout-global
   layout-global-sidebar(width="50px", align="left")
     div(style="width: 100%; height:100%; background: green")
   layout-global-section
-    row 123
+    layout-row
+      layout-col(span="8") 1
+      layout-col(span="8") 2
+      layout-col(span="8") 3
     fit-input(label="This is placeholder.", highlight, direction="center")
       div(slot="rightRender") 233
       div(slot="innerRender")
 </template>
 
 <script>
-import {LayoutGlobal, LayoutGlobalHeader, LayoutGlobalFooter, LayoutGlobalSidebar, LayoutGlobalSection, Row, Col, FitInput} from './components/index.js'
+import {LayoutGlobal, LayoutGlobalHeader, LayoutGlobalFooter, LayoutGlobalSidebar, LayoutGlobalSection, LayoutRow, LayoutCol, FitInput} from './components/index.js'
+
 export default {
   components: {
     fitInput: FitInput,
@@ -23,8 +27,8 @@ export default {
     layoutGlobalFooter: LayoutGlobalFooter,
     layoutGlobalSidebar: LayoutGlobalSidebar,
     layoutGlobalSection: LayoutGlobalSection,
-    row: Row,
-    col: Col
+    layoutRow: LayoutRow,
+    layoutCol: LayoutCol
   }
 }
 </script>

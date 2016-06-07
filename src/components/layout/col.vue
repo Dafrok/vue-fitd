@@ -1,13 +1,22 @@
 <template lang="jade">
-div(class="classes")
+div(:class="classes")
   slot
 </template>
 
 <script>
 export default {
+  props: ['span', 'order', 'offset', 'push', 'pull'],
   computed: {
     classes () {
-      
+      return {
+        'col': true,
+        'fit-layout-col': true,
+        ['col-' + this.span]: this.span,
+        ['col-order-' + this.order]: this.order,
+        ['col-offset-' + this.offset]: this.offset,
+        ['col-push-' + this.push]: this.push,
+        ['col-pull-' + this.pull]: this.pull
+      }
     }
   }
 }
