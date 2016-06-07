@@ -1,9 +1,6 @@
 <template lang="jade">
 div(style="width: 100%; height: 100%")
-  div(:style="{position: 'absolute', right: 'auto', left: 0, top: sidebarTop, bottom: sidebarBottom, width: sidebarWidth}")
-    slot(name="leftbar")
-  div(:style="{position: 'absolute', right: 0, left: 'auto', top: sidebarTop, bottom: sidebarBottom, width: sidebarWidth}")
-    slot(name="rightbar")
+  slot(name="sidebar")
   slot(name="header")
   slot(name="footer")
   slot(name="section")
@@ -15,6 +12,7 @@ export default {
     return {
       sidebarTop: null,
       sidebarBottom: null,
+      sidebarAlign: null,
       sidebarWidth: null,
       headerHeight: null,
       footerHeight: null,
@@ -24,10 +22,11 @@ export default {
   },
   watch: {
     headerSingleLine (val) {
-      this.sidebarTop = this.headerHeight
+      this.sidebarTop = val ? this.headerHeight : 0
     },
     footerSingleLine (val) {
-      this.sidebarBottom = this.footerHeight
+      console.log(val)
+      this.sidebarBottom = val ? this.footerHeight : 0
     }
   }
 }

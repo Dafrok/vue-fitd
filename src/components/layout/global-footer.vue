@@ -1,5 +1,5 @@
 <template lang="jade">
-footer.fit-layout-global-footer(:style="{height: height}")
+footer.fit-layout-global-footer(:style="style")
   slot
 </template>
 
@@ -9,6 +9,17 @@ export default {
   ready () {
     this.$parent.footerSingleLine = this.singleLine
     this.$parent.$set('footerHeight', this.height || '100px')
+  },
+  computed: {
+    style () {
+      const isLeftSidebar = !(this.$parent.sidebarAlign === 'right')
+      return {
+        width: this.singleLine ? '100%' : 'auto',
+        left: this.singleLine ? 'auto' : isLeftSidebar ? this.$parent.sidebarWidth : 0,
+        right: this.singleLine ? 'auto' : isLeftSidebar ? 0 : this.$parent.sidebarWidth,
+        height: this.height
+      }
+    }
   }
 }
 </script>
@@ -19,7 +30,6 @@ export default {
   position absolute
   left 0
   bottom 0
-  width 100%
   height 100px
   z-index 3
 </style>

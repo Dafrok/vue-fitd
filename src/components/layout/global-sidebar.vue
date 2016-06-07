@@ -5,11 +5,23 @@ div.fit-layout-global-sidebar(:style="style")
 
 <script>
 export default {
-  props: ['width'],
-  watch: {
-    width (val) {
-      this.$parent.$set('sidebarWidth', this.width)
+  props: ['width', 'align'],
+  computed: {
+    style () {
+      const isLeft = !(this.align === 'right')
+      return {
+        position: 'absolute',
+        width: this.width,
+        left: isLeft ? 0 : 'auto',
+        right: isLeft ? 'auto' : 0,
+        bottom: this.$parent.sidebarBottom,
+        top: this.$parent.sidebarTop
+      }
     }
+  },
+  ready () {
+    this.$parent.$set('sidebarWidth', this.width)
+    this.$parent.$set('sidebarAlign', this.align)
   }
 }
 </script>
