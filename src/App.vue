@@ -8,27 +8,33 @@ layout-global
     div(style="width: 100%; height:100%; background: green")
   layout-global-section
     layout-row
-      layout-col(span="8") 1
-      layout-col(span="8") 2
-      layout-col(span="8") 3
-    fit-input(label="This is placeholder.", highlight, direction="center")
-      div(slot="rightRender") 233
-      div(slot="innerRender")
+      layout-col(span="8")
+        fit-input(label="This is placeholder.", highlight, direction="left")
+      layout-col(span="8")
+        fit-button default
+        fit-button(type="primary") primary
+        fit-button(type="success") success
+        fit-button(type="warning") warning
+        fit-button(type="danger") danger
+    layout-col(span="8")
+        fit-input(label="This is placeholder.", highlight, direction="left")
 </template>
 
 <script>
-import {LayoutGlobal, LayoutGlobalHeader, LayoutGlobalFooter, LayoutGlobalSidebar, LayoutGlobalSection, LayoutRow, LayoutCol, FitInput} from './components/index.js'
+import {LayoutGlobal, LayoutGlobalHeader, LayoutGlobalFooter, LayoutGlobalSidebar, LayoutGlobalSection, LayoutRow, LayoutCol
+  , FitButton, FitInput} from './components/index.js'
 
 export default {
   components: {
-    fitInput: FitInput,
     layoutGlobal: LayoutGlobal,
     layoutGlobalHeader: LayoutGlobalHeader,
     layoutGlobalFooter: LayoutGlobalFooter,
     layoutGlobalSidebar: LayoutGlobalSidebar,
     layoutGlobalSection: LayoutGlobalSection,
     layoutRow: LayoutRow,
-    layoutCol: LayoutCol
+    layoutCol: LayoutCol,
+    fitButton: FitButton,
+    fitInput: FitInput
   }
 }
 </script>

@@ -5,7 +5,8 @@ import LayoutGlobalSidebar from './layout/global-sidebar.vue'
 import LayoutGlobalSection from './layout/global-section.vue'
 import LayoutRow from './layout/row.vue'
 import LayoutCol from './layout/col.vue'
-import FitInput from './fit-input.vue'
+import FitInput from './form/input.vue'
+import FitButton from './form/button.vue'
 
 export {LayoutGlobal}
 export {LayoutGlobalHeader}
@@ -15,6 +16,7 @@ export {LayoutGlobalSection}
 export {LayoutRow}
 export {LayoutCol}
 export {FitInput}
+export {FitButton}
 
 export default {
   LayoutGlobal: LayoutGlobal,
@@ -24,5 +26,6 @@ export default {
   LayoutGlobalSection: LayoutGlobalSection,
   LayoutRow: LayoutRow,
   LayoutCol: LayoutCol,
-  FitInput: FitInput
+  FitInput: FitInput,
+  FitButton: FitButton
 }
