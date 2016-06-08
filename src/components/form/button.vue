@@ -2,17 +2,23 @@
 button(:class="classes")
   div(class="button-container")
     // slot(name="addon-left")
-    i(:class="addonLeftClass", v-if="addonLeft")
     div(class="text-child")
       slot
     i(:class="addonRightClass", v-if="addonRight")
-    // slot(name="addon-right")
+    div(:class="loadingClass")
+      i.fa.fa-refresh.fa-spin
 </template>
 
 <script>
 export default {
   props: ['type', 'disabled', 'loading', 'rounded', 'size', 'active', 'addon-left', 'addon-right'],
   computed: {
+    loadingClass () {
+      return {
+        'loading-container': true,
+        'show': this.loading
+      }
+    },
     addonLeftClass () {
       return {
         'fa': this.addonLeft,
@@ -38,7 +44,7 @@ export default {
         'fit-button': true,
         'btn': true,
         [`btn-${this.type || 'default'}`]: true,
-        'disabled': this.disabled || this.loading === true,
+        'disabled': this.disabled || this.loading,
         // 'btn-addon': this.addonLeft || this.addonRight,
         'btn-addon': true,
         'btn-rounded': this.rounded,

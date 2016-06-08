@@ -11,11 +11,11 @@ layout-global
       layout-col(span="8")
         fit-input(label="This is placeholder.", highlight, direction="left")
       layout-col(span="8")
-        fit-button default
-        fit-button(type="primary") primary
+        fit-button(active) default
+        fit-button(type="primary", rounded, loading) primary
         fit-button(type="success", size="lg", addon-left="trash-o") success
-        fit-button(type="warning", addon-right="plus") warning
-        fit-button(type="danger", size="sm", addon-left="trash", addon-right="plus-circle") danger
+        fit-button(type="warning", addon-right="plus", disabled) warning
+        fit-button(type="danger", size="sm", loading) danger
         button-group
           fit-button(type="primary") foo
           fit-button(type="dark") bar
