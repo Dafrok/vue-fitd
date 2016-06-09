@@ -6,7 +6,7 @@ button(:class="classes")
       slot
     i(:class="addonRightClass", v-if="addonRight")
     div(:class="loadingClass")
-      i.fa.fa-refresh.fa-spin
+      i.fa.fa-refresh.fa-spin.loading-icon
 </template>
 
 <script>
@@ -144,6 +144,8 @@ export default {
   overflow hidden
 .fit-button .loading-container.show
   width 22px
+.fit-button .loading-container i.loading-icon
+  background-color transparent
 
 .fit-button.btn
   display inline-block
