@@ -10,6 +10,7 @@ layout-global
     layout-row
       layout-col(span="8")
         fit-input(label="This is placeholder.", highlight, direction="left")
+        modal(:show="true") text
       layout-col(span="8")
         fit-button(active) default
         fit-button(type="primary", rounded, loading) primary
@@ -30,7 +31,7 @@ layout-global
 
 <script>
 import {LayoutGlobal, LayoutGlobalHeader, LayoutGlobalFooter, LayoutGlobalSidebar, LayoutGlobalSection, LayoutRow, LayoutCol
-  , FitButton, ButtonGroup, FitInput} from './components/index.js'
+  , FitButton, ButtonGroup, FitInput, Modal} from './components/index.js'
 
 export default {
   components: {
@@ -43,7 +44,8 @@ export default {
     layoutCol: LayoutCol,
     fitButton: FitButton,
     fitInput: FitInput,
-    buttonGroup: ButtonGroup
+    buttonGroup: ButtonGroup,
+    modal: Modal
   }
 }
 </script>

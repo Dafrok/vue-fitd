@@ -22,7 +22,6 @@ export default {
       this.sidebarTop = val ? this.headerHeight : 0
     },
     footerSingleLine (val) {
-      console.log(val)
       this.sidebarBottom = val ? this.footerHeight : 0
     }
   }

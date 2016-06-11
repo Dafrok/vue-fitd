@@ -1,6 +1,6 @@
 <template lang="jade">
-div(:class="classes")
-  div.model-dialog
+div(:class="classes", :style="{display: show ? 'block' : false}")
+  div(:class="extraModalSizeClass")
     div.modal-content
       div.modal-header(v-text="title", v-if="title")
       div.modal-body
@@ -16,7 +16,15 @@ export default {
     classes () {
       return {
         'modal': true,
-        'model-open'
+        'fade': true,
+        'in': true
+      }
+    },
+    extraModalSizeClass () {
+      return {
+        'modal-dialog': true,
+        'modal-lg': this.size === 'large',
+        'modal-sm': this.size === 'small'
       }
     }
   }
@@ -25,30 +33,30 @@ export default {
 
 <style lang="stylus">
 
-$border-radius = .25rem !default;
-$border-radius-lg = .3rem !default;
-$border-radius-sm = .2rem !default;
-$line-height = 1.5 !default;
+$border-radius = .25rem //!default;
+$border-radius-lg = .3rem //!default;
+$border-radius-sm = .2rem //!default;
+$line-height = 1.5 //!default;
 
 // Modals
 
 // Padding applied to the modal body
-$modal-inner-padding = 15px !default;
+$modal-inner-padding = 15px //!default;
 
-$modal-title-padding = 15px !default;
-$modal-title-line-height = $line-height !default;
+$modal-title-padding = 15px //!default;
+$modal-title-line-height = $line-height //!default;
 
-$modal-content-bg = #fff !default;
-$modal-content-border-color = rgba(0, 0, 0, .2) !default;
+$modal-content-bg = #fff //!default;
+$modal-content-border-color = rgba(0, 0, 0, .2) //!default;
 
-$modal-backdrop-bg = #000 !default;
-$modal-backdrop-opacity = .5 !default;
-$modal-header-border-color = #e5e5e5 !default;
-$modal-footer-border-color = $modal-header-border-color !default;
+$modal-backdrop-bg = #000 //!default;
+$modal-backdrop-opacity = .5 //!default;
+$modal-header-border-color = #e5e5e5 //!default;
+$modal-footer-border-color = $modal-header-border-color //!default;
 
-$modal-lg = 900px !default;
-$modal-md = 600px !default;
-$modal-sm = 300px !default;
+$modal-lg = 900px //!default;
+$modal-md = 600px //!default;
+$modal-sm = 300px //!default;
 
 &
     overflow-x: hidden;

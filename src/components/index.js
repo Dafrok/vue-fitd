@@ -8,6 +8,7 @@ import LayoutCol from './layout/col.vue'
 import FitInput from './form/input.vue'
 import FitButton from './form/button.vue'
 import ButtonGroup from './form/button-group.vue'
+import Modal from './view/modal.vue'
 
 export {LayoutGlobal}
 export {LayoutGlobalHeader}
@@ -19,6 +20,7 @@ export {LayoutCol}
 export {FitInput}
 export {FitButton}
 export {ButtonGroup}
+export {Modal}
 
 export default {
   LayoutGlobal: LayoutGlobal,
@@ -30,5 +32,6 @@ export default {
   LayoutCol: LayoutCol,
   FitInput: FitInput,
   FitButton: FitButton,
-  ButtonGroup: ButtonGroup
+  ButtonGroup: ButtonGroup,
+  Modal: Modal
 }
