@@ -1,17 +1,41 @@
 <template lang="jade">
-div(:class="classes", :style="{display: show ? 'block' : false}")
-  div(:class="extraModalSizeClass")
+div(:class="classes", :style="{display: show ? 'block' : 'none'}", @click="handleOutClick")
+  div(:class="extraModalSizeClass", @click="stopBackdropEvent")
     div.modal-content
       div.modal-header(v-text="title", v-if="title")
       div.modal-body
         slot
-      div.model-footer(v-if)
+      div.modal-footer
         slot(name="operate-bar")
+          fit-button(@click="handleCancel", type="secondary")
+            span(v-text="cancelText")
+          fit-button(@click="handleOk", type="primary")
+            span(v-text="okText")
 </template>
 
 <script>
+import FitButton from '../form/button.vue'
 export default {
+  components: {
+    fitButton: FitButton
+  },
   props: ['type', 'cancel-text', 'ok-text', 'show', 'title', 'size', 'backdrop-click-to-close'],
+  methods: {
+    handleOk () {
+      this.$dispatch('ok')
+    },
+    handleCancel () {
+      this.$dispatch('cancel')
+    },
+    handleOutClick () {
+      if (this.backdropClickToClose) {
+        this.handleCancel()
+      }
+    },
+    stopBackdropEvent (e) {
+      e.stopPropagation()
+    }
+  },
   computed: {
     classes () {
       return {
@@ -26,6 +50,12 @@ export default {
         'modal-lg': this.size === 'large',
         'modal-sm': this.size === 'small'
       }
+    },
+    okText () {
+      return this['ok-text'] || 'Ok'
+    },
+    cancelText () {
+      return this['cancel-text'] || 'Cancel'
     }
   }
 }
@@ -58,7 +88,7 @@ $modal-lg = 900px //!default;
 $modal-md = 600px //!default;
 $modal-sm = 300px //!default;
 
-&
+.modal
     overflow-x: hidden;
     overflow-y: auto;
     background: rgba(0, 0, 0, .35);

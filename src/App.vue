@@ -10,7 +10,7 @@ layout-global
     layout-row
       layout-col(span="8")
         fit-input(label="This is placeholder.", highlight, direction="left")
-        modal(:show="true") text
+        modal(:show="showModal", @ok="closeModal", @cancel="closeModal", backdrop-click-to-close, title="Title") text
       layout-col(span="8")
         fit-button(active) default
         fit-button(type="primary", rounded, loading) primary
@@ -46,6 +46,16 @@ export default {
     fitInput: FitInput,
     buttonGroup: ButtonGroup,
     modal: Modal
+  },
+  data () {
+    return {
+      showModal: true
+    }
+  },
+  methods: {
+    closeModal () {
+      this.showModal = false
+    }
   }
 }
 </script>
