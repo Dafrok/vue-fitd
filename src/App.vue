@@ -26,12 +26,14 @@ layout-global
           fit-button(type="dark") bar
           fit-button(type="success") baz
     layout-col(span="8")
-        fit-input(label="This is placeholder.", highlight, direction="left")
+        fit-button(type="primary", @click="openModal") Open Modal
+        pagination(v-bind:default-page="page", @change="changePage")
+        span(v-text="page")
 </template>
 
 <script>
 import {LayoutGlobal, LayoutGlobalHeader, LayoutGlobalFooter, LayoutGlobalSidebar, LayoutGlobalSection, LayoutRow, LayoutCol
-  , FitButton, ButtonGroup, FitInput, Modal} from './components/index.js'
+  , FitButton, ButtonGroup, FitInput, Modal, Pagination} from './components/index.js'
 
 export default {
   components: {
@@ -45,16 +47,24 @@ export default {
     fitButton: FitButton,
     fitInput: FitInput,
     buttonGroup: ButtonGroup,
-    modal: Modal
+    modal: Modal,
+    pagination: Pagination
   },
   data () {
     return {
-      showModal: true
+      showModal: false,
+      page: 1
     }
   },
   methods: {
+    openModal () {
+      this.showModal = true
+    },
     closeModal () {
       this.showModal = false
+    },
+    changePage (page) {
+      this.page = page
     }
   }
 }

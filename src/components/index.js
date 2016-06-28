@@ -9,6 +9,7 @@ import FitInput from './form/input.vue'
 import FitButton from './form/button.vue'
 import ButtonGroup from './form/button-group.vue'
 import Modal from './view/modal.vue'
+import Pagination from './view/pagination.vue'
 
 export {LayoutGlobal}
 export {LayoutGlobalHeader}
@@ -21,6 +22,7 @@ export {FitInput}
 export {FitButton}
 export {ButtonGroup}
 export {Modal}
+export {Pagination}
 
 export default {
   LayoutGlobal: LayoutGlobal,
@@ -33,5 +35,6 @@ export default {
   FitInput: FitInput,
   FitButton: FitButton,
   ButtonGroup: ButtonGroup,
-  Modal: Modal
+  Modal: Modal,
+  Pagination: Pagination
 }
