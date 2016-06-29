@@ -6,7 +6,7 @@
 <script>
 import {FitButton} from 'vue-fitd'
 export default {
-  template: `<FitButton>Button</Button>`
+  template: `<FitButton>Button</FitButton>`
   components: {
     fitButton: FitButton
   }
