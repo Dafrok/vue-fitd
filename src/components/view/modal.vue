@@ -22,10 +22,10 @@ export default {
   props: ['type', 'cancel-text', 'ok-text', 'show', 'title', 'size', 'backdrop-click-to-close'],
   methods: {
     handleOk () {
-      this.$dispatch('ok')
+      this.$emit('ok')
     },
     handleCancel () {
-      this.$dispatch('cancel')
+      this.$emit('cancel')
     },
     handleOutClick () {
       if (this.backdropClickToClose) {
