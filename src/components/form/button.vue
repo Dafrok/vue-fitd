@@ -144,8 +144,9 @@ export default {
   overflow hidden
 .fit-button .loading-container.show
   width 22px
-.fit-button .loading-container i.loading-icon
+.fit-button.btn-addon .loading-container i.loading-icon
   background-color transparent
+  border-right 0
 
 .fit-button.btn
   display inline-block

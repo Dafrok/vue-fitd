@@ -27,7 +27,7 @@ layout-global
           fit-button(type="success") baz
     layout-col(span="8")
         fit-button(type="primary", @click="openModal") Open Modal
-        pagination(v-bind:default-page="page", @change="changePage")
+        pagination(v-bind:default-page="page", v-bind:loading="paginationLoading", @change="changePage")
         span(v-text="page")
 </template>
 
@@ -53,7 +53,8 @@ export default {
   data () {
     return {
       showModal: false,
-      page: 1
+      page: 1,
+      paginationLoading: false
     }
   },
   methods: {
@@ -65,6 +66,11 @@ export default {
     },
     changePage (page) {
       this.page = page
+      this.paginationLoading = true
+      setTimeout(() => {
+        this.page = page
+        this.paginationLoading = false
+      }, 2000)
     }
   }
 }

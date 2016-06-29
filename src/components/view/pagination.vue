@@ -1,7 +1,7 @@
 <template lang="jade">
 button-group
-  fit-button(@click="handleChange(currentPage - 1, !hasPrevious || loading, 'before')", v-bind:disabled="!hasPrevious") 上一页
-  fit-button(@click="handleChange(currentPage + 1, !hasNext || loading, 'after')", v-bind:disabled="!hasNext") 下一页
+  fit-button(@click="handleChange(currentPage - 1, !hasPrevious || loading, 'before')", v-bind:disabled="!hasPrevious", v-bind:loading="isPreviousLoading") 上一页
+  fit-button(@click="handleChange(currentPage + 1, !hasNext || loading, 'after')", v-bind:disabled="!hasNext", v-bind:loading="isNextLoading") 下一页
 </template>
 
 <script>
@@ -26,10 +26,17 @@ export default {
     },
     hasPrevious () {
       return this.currentPage !== 1
+    },
+    isPreviousLoading () {
+      return this.activeButtonName === 'before' && this.loading
+    },
+    isNextLoading () {
+      return this.activeButtonName === 'after' && this.loading
     }
   },
   methods: {
     handleChange (page, disable, activeButtonName) {
+      console.log(this.isNextLoading)
       if (!disable) {
         this.currentPage = page
         this.activeButtonName = activeButtonName
