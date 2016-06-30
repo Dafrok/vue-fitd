@@ -28,15 +28,18 @@ export default {
       return this.currentPage !== 1
     },
     isPreviousLoading () {
-      return this.activeButtonName === 'before' && this.loading
+      const active = (this.activeButtonName === 'before')
+      const loading = this.loading
+      return active && loading
     },
     isNextLoading () {
-      return this.activeButtonName === 'after' && this.loading
+      const active = (this.activeButtonName === 'after')
+      const loading = this.loading
+      return active && loading
     }
   },
   methods: {
     handleChange (page, disable, activeButtonName) {
-      console.log(this.isNextLoading)
       if (!disable) {
         this.currentPage = page
         this.activeButtonName = activeButtonName
