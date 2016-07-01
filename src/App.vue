@@ -27,13 +27,14 @@ layout-global
           fit-button(type="success") baz
     layout-col(span="8")
         fit-button(type="primary", @click="openModal") Open Modal
+        pagination-full(enable-jump)
         pagination(v-bind:default-page="page", v-bind:loading="paginationLoading", @change="changePage")
         span(v-text="page")
 </template>
 
 <script>
 import {LayoutGlobal, LayoutGlobalHeader, LayoutGlobalFooter, LayoutGlobalSidebar, LayoutGlobalSection, LayoutRow, LayoutCol
-  , FitButton, ButtonGroup, FitInput, Modal, Pagination} from './components/index.js'
+  , FitButton, ButtonGroup, FitInput, Modal, Pagination, PaginationFull} from './components/index.js'
 
 export default {
   components: {
@@ -48,7 +49,8 @@ export default {
     fitInput: FitInput,
     buttonGroup: ButtonGroup,
     modal: Modal,
-    pagination: Pagination
+    pagination: Pagination,
+    paginationFull: PaginationFull
   },
   data () {
     return {
@@ -65,7 +67,6 @@ export default {
       this.showModal = false
     },
     changePage (page) {
-      this.page = page
       this.paginationLoading = true
       setTimeout(() => {
         this.page = page

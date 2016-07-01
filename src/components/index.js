@@ -10,6 +10,7 @@ import FitButton from './form/button.vue'
 import ButtonGroup from './form/button-group.vue'
 import Modal from './view/modal.vue'
 import Pagination from './view/pagination.vue'
+import PaginationFull from './view/pagination-full.vue'
 
 export {LayoutGlobal}
 export {LayoutGlobalHeader}
@@ -23,6 +24,7 @@ export {FitButton}
 export {ButtonGroup}
 export {Modal}
 export {Pagination}
+export {PaginationFull}
 
 export default {
   LayoutGlobal: LayoutGlobal,
@@ -36,5 +38,6 @@ export default {
   FitButton: FitButton,
   ButtonGroup: ButtonGroup,
   Modal: Modal,
-  Pagination: Pagination
+  Pagination: Pagination,
+  PaginationFull: PaginationFull
 }
