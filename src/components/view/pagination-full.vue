@@ -1,8 +1,9 @@
 <template lang="jade">
 nav.fit-pagination-pagination-full
   button-group.pagination
-    fit-button.before <
-    fit-button.after >
+    fit-button.before(@click="handleChange(currentPage - 1, !hasPrevious || loading, 'before')", v-bind:disabled="!hasPrevious || loading", v-bind:loading="isPreviousLoading") <
+    fit-button(@click="handleChange(page, loading || page === currentPage, page > currentPage ? 'after' : 'before')", v-for="page of middleNumbers", v-bind:class="{active: page === currentPage && !loading}", v-bind:disabled="!page || loading", track-by="$index") {{page || '...'}}
+    fit-button.after(@click="handleChange(currentPage + 1, !hasNext || loading, 'after')", v-bind:disabled="!hasNext || loading", v-bind:loading="isNextLoading") >
     fit-input.inline-input(v-if="enableJump")
     fit-button(v-if="enableJump") 跳转
 </template>
@@ -14,7 +15,7 @@ import FitButton from '../form/button.vue'
 import ButtonGroup from '../form/button-group.vue'
 
 export default {
-  props: ['default-page', 'all-page', 'enable-jump'],
+  props: ['default-page', 'all-page', 'enable-jump', 'loading'],
   data () {
     return {
       currentPage: this.defaultPage
@@ -24,6 +25,58 @@ export default {
     fitInput: FitInput,
     fitButton: FitButton,
     buttonGroup: ButtonGroup
+  },
+  watch: {
+    defaultPage (newVal, oldVal) {
+      this.currentPage = newVal
+    }
+  },
+  computed: {
+    middleNumbers () {
+      const all = this.allPage
+      const current = this.currentPage
+
+      if (all <= 7) {
+        let arrs = []
+        for (let i = 0; i < all; i++) {
+          arrs.push(i + 1)
+        }
+        return arrs
+      }
+      if (current <= 4) {
+        return [1, 2, 3, 4, 5, 6, null, all]
+      }
+      if (all - current < 5) {
+        let arr = [1, null]
+        for (let i = all - 6; i <= all; i++) {
+          arr.push(i)
+        }
+        return arr
+      }
+      let arr = [1, null]
+      for (let i = current - 2; i <= current + 3; i++) {
+        arr.push(i)
+      }
+      arr.push(null)
+      arr.push(all)
+      return arr
+    },
+    hasNext () {
+      return this.currentPage !== this.allPage
+    },
+    hasPrevious () {
+      return this.currentPage !== 1
+    },
+    isPreviousLoading () {
+      const active = (this.activeButtonName === 'before')
+      const loading = this.loading
+      return active && loading
+    },
+    isNextLoading () {
+      const active = (this.activeButtonName === 'after')
+      const loading = this.loading
+      return active && loading
+    }
   },
   methods: {
     handleChange (page, disable, activeButtonName) {
