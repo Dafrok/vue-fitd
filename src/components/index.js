@@ -25,6 +25,7 @@ export {ButtonGroup}
 export {Modal}
 export {Pagination}
 export {PaginationFull}
+export {Message}
 
 export default {
   LayoutGlobal: LayoutGlobal,
@@ -39,5 +40,6 @@ export default {
   ButtonGroup: ButtonGroup,
   Modal: Modal,
   Pagination: Pagination,
-  PaginationFull: PaginationFull
+  PaginationFull: PaginationFull,
+  Message: Message
 }
