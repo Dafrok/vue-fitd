@@ -20,6 +20,12 @@ export default {
     fitButton: FitButton,
     buttonGroup: ButtonGroup
   },
+  watch: {
+    defaultPage (newVal, oldVal) {
+      console.log(newVal)
+      this.currentPage = newVal
+    }
+  },
   computed: {
     hasNext () {
       return typeof this.next === 'undefined' ? true : this.next

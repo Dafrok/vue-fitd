@@ -2,8 +2,8 @@
 layout-global
   layout-global-header(height="20px", single-line)
     div(style="width: 100%; height:100%; background: red")
-  layout-global-footer(height="20px")
-    div(style="width: 100%; height:100%; background: blue")
+  layout-global-footer(height="40px")
+    pagination-full(enable-jump, v-bind:default-page="page", all-page="100", @change="changePage", v-bind:loading="paginationLoading")
   layout-global-sidebar(width="50px", align="left")
     div(style="width: 100%; height:100%; background: green")
   layout-global-section
@@ -27,7 +27,6 @@ layout-global
           fit-button(type="success") baz
     layout-col(span="8")
         fit-button(type="primary", @click="openModal") Open Modal
-        pagination-full(enable-jump)
         pagination(v-bind:default-page="page", v-bind:loading="paginationLoading", @change="changePage")
         span(v-text="page")
 </template>
