@@ -23,6 +23,9 @@ export default {
   watch: {
     defaultPage (newVal, oldVal) {
       this.currentPage = newVal
+    },
+    loading (newVal, oldVal) {
+      !newVal && (this.activeButtonName = null)
     }
   },
   computed: {
