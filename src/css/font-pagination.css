@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'fit-pagination';
+  src: url("../fonts/fit-pagination.eot");
+  src: url("../fonts/fit-pagination.eot") format("embedded-opentype"), url("../fonts/fit-pagination.ttf") format("truetype"), url("../fonts/fit-pagination.woff") format("woff"), url("../fonts/fit-pagination.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}

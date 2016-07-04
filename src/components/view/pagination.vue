@@ -22,7 +22,6 @@ export default {
   },
   watch: {
     defaultPage (newVal, oldVal) {
-      console.log(newVal)
       this.currentPage = newVal
     }
   },

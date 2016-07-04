@@ -1,9 +1,11 @@
 <template lang="jade">
 nav.fit-pagination-pagination-full
   button-group.pagination
-    fit-button.before(@click="handleChange(currentPage - 1, !hasPrevious || loading, 'before')", v-bind:disabled="!hasPrevious || loading", v-bind:loading="isPreviousLoading") <
+    fit-button.before.pagination-left(@click="handleChange(currentPage - 1, !hasPrevious || loading, 'before')", v-bind:disabled="!hasPrevious || loading", v-bind:loading="isPreviousLoading")
+      i.fit-pagination-left
     fit-button(@click="handleChange(page, loading || page === currentPage, page > currentPage ? 'after' : 'before')", v-for="page of middleNumbers", v-bind:class="{active: page === currentPage && !loading}", v-bind:disabled="!page || loading", track-by="$index") {{page || '...'}}
-    fit-button.after(@click="handleChange(currentPage + 1, !hasNext || loading, 'after')", v-bind:disabled="!hasNext || loading", v-bind:loading="isNextLoading") >
+    fit-button.after.pagination-right(@click="handleChange(currentPage + 1, !hasNext || loading, 'after')", v-bind:disabled="!hasNext || loading", v-bind:loading="isNextLoading")
+      i.fit-pagination-right
     fit-input.inline-input(v-if="enableJump")
     fit-button(v-if="enableJump") 跳转
 </template>
@@ -95,6 +97,13 @@ export default {
 </script>
 
 <style>
+.fit-pagination-left:before, .fit-pagination-right:before {
+  font-family: 'fit-pagination';
+}
+.fit-pagination-left:before {
+  content: "\ea1d"; }
+.fit-pagination-right:before {
+  content: "\ea1c"; }
 .fit-pagination-pagination-full .pagination {
   display: -webkit-box;
   display: -webkit-flex;
@@ -112,6 +121,10 @@ export default {
   display: inline-block;
   float: left;
   margin: 0; }
-  .fit-pagination-pagination-full .inline-input .input {
-    padding: 7px 10px 7px 10px; width: 100px; }
+.fit-pagination-pagination-full .inline-input .input {
+  padding: 7px 10px 7px 10px; width: 100px; }
+.fit-pagination-pagination-full .pagination i {
+  border-right: 0!important;
+  width: auto!important;
+}
 </style>
