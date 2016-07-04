@@ -1,6 +1,6 @@
 <template lang="jade">
 div(class="fit-input")
-  input(required, @change="inputChange", class="input", :placeholder="placeholder")
+  input(required, @change.stop="inputChange", class="input", :placeholder="placeholder", v-model="value")
   div.right-addon
       slot(name="rightRender")
   slot(name="innerRender")
@@ -13,15 +13,14 @@ div(class="fit-input")
 
 <script>
 export default {
-  props: ['label', 'direction', 'highlight', 'handleInputChange', 'placeholder'],
+  props: ['value', 'label', 'direction', 'highlight', 'placeholder'],
   data () {
     return {
     }
   },
   methods: {
-    inputChange () {
-      console.log('changed')
-      typeof this.handleInputChange === 'function' && this.handleInputChange()
+    inputChange (e) {
+      this.$emit('change', e)
     }
   }
 }
