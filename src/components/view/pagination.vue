@@ -47,22 +47,6 @@ export default {
     }
   },
   methods: {
-    // jump (page) {
-    //   let activeButtonName
-    //   if (page === this.currentPage) {
-    //     return
-    //   }
-    //   if (page > this.currentPage) {
-    //     if (!this.props.next) {
-    //       return
-    //     }
-    //     activeButtonName = 'after'
-    //   }
-    //   if (page < this.currentPage) {
-    //     activeButtonName = 'before'
-    //   }
-    //   this.handleChange(page, false, activeButtonName)
-    // },
     handleChange (page, disable, activeButtonName) {
       if (!disable) {
         this.currentPage = page

@@ -6,8 +6,8 @@ nav.fit-pagination-pagination-full
     fit-button(@click="handleChange(page, loading || page === currentPage, page > currentPage ? 'after' : 'before')", v-for="page of middleNumbers", v-bind:class="{active: page === currentPage && !loading}", v-bind:disabled="!page || loading", track-by="$index") {{page || '...'}}
     fit-button.after.pagination-right(@click="handleChange(currentPage + 1, !hasNext || loading, 'after')", v-bind:disabled="!hasNext || loading", v-bind:loading="isNextLoading")
       i.fit-pagination-right
-    fit-input.inline-input(v-if="enableJump")
-    fit-button(v-if="enableJump") 跳转
+    fit-input.inline-input(v-if="enableJump", @change="changeJumpPageNumber", @keyup.enter="doJump", label="页码", placeholder="请输入数字")
+    fit-button(v-if="enableJump", @click="doJump") 跳转
 </template>
 
 <script>
@@ -20,7 +20,8 @@ export default {
   props: ['default-page', 'all-page', 'enable-jump', 'loading'],
   data () {
     return {
-      currentPage: this.defaultPage
+      currentPage: this.defaultPage,
+      jumpPageNumber: 1
     }
   },
   components: {
@@ -31,6 +32,9 @@ export default {
   watch: {
     defaultPage (newVal, oldVal) {
       this.currentPage = newVal
+    },
+    loading (newVal, oldVal) {
+      !newVal && (this.activeButtonName = null)
     }
   },
   computed: {
@@ -81,6 +85,29 @@ export default {
     }
   },
   methods: {
+    changeJumpPageNumber (e) {
+      this.jumpPageNumber = e.target.value
+    },
+    jump (page) {
+      let activeButtonName
+      if (page === this.currentPage || page > this.allPage || page < 1) {
+        return
+      }
+      if (page > this.currentPage && page <= this.allPage) {
+        activeButtonName = 'after'
+      }
+      if (page > 0 && page < this.currentPage) {
+        activeButtonName = 'before'
+      }
+      this.handleChange(page, false, activeButtonName)
+    },
+    doJump () {
+      const jumpNumber = parseInt(this.jumpPageNumber)
+      const allPage = parseInt(this.allPage)
+      if (jumpNumber > 0 && jumpNumber <= allPage) {
+        this.jump(jumpNumber)
+      }
+    },
     handleChange (page, disable, activeButtonName) {
       if (!disable) {
         let tempPage = this.currentPage
