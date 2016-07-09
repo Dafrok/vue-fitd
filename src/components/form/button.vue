@@ -1,7 +1,7 @@
 <template lang="jade">
 button(:class="classes")
   div(class="button-container")
-    // slot(name="addon-left")
+    i(:class="addonLeftClass", v-if="addonLeft")
     div(class="text-child")
       slot
     i(:class="addonRightClass", v-if="addonRight")
