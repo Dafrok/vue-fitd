@@ -29,7 +29,7 @@ layout-global
         fit-button(type="primary", @click="openModal") Open Modal
         pagination(:default-page="page", :loading="paginationLoading", @change="changePage")
         span(v-text="page")
-        message(:show="showMessage", type="info") Message
+        message(:show="showMessage", type="info", timeout="1000") Message
 </template>
 
 <script>
