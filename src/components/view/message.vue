@@ -1,5 +1,5 @@
 <template lang="jade">
-div.fit-message(v-if="showMessage")
+div.fit-message(v-if="showMessage", :class="type")
   div.m-layer.z-show
     table
       tbody
@@ -16,7 +16,7 @@ import FitButton from '../form/button.vue'
 import ButtonGroup from '../form/button-group.vue'
 
 export default {
-  props: ['show', 'timeout'],
+  props: ['show', 'timeout', 'type'],
   data () {
     return {
       showMessage: this.show,
