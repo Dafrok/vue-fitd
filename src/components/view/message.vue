@@ -6,15 +6,11 @@ div.fit-message(v-if="showMessage", :class="type")
         tr
           td
             article.lywrap
-              section(:class="typeClass")
+              section.lyct(:class="type")
                 slot
 </template>
 
 <script>
-import Vue from 'vue'
-import FitButton from '../form/button.vue'
-import ButtonGroup from '../form/button-group.vue'
-
 export default {
   props: ['show', 'timeout', 'type'],
   data () {
@@ -24,12 +20,13 @@ export default {
     }
   },
   watch: {
-    showMessage: function (newVal, oldVal) {
+    show: function (newVal, oldVal) {
       if (newVal) {
         this.showMessage = true
         this.timeoutId = setTimeout(() => {
+          this.showMessage = false
           this.$emit('close')
-        }, this.timeout)
+        }, this.timeout || 5000)
       } else {
         this.showMessage = false
         clearTimeout(this.timeoutId)
@@ -39,7 +36,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus">
 .fit-message {
   position: absolute;
   top: 20px;

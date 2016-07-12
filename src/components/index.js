@@ -11,6 +11,7 @@ import ButtonGroup from './form/button-group.vue'
 import Modal from './view/modal.vue'
 import Pagination from './view/pagination.vue'
 import PaginationFull from './view/pagination-full.vue'
+import Message from './view/message.vue'
 
 export {LayoutGlobal}
 export {LayoutGlobalHeader}
