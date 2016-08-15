@@ -30,11 +30,19 @@ layout-global
         pagination(:default-page="page", :loading="paginationLoading", @change="changePage")
         span(v-text="page")
         message(:show="showMessage", type="info", timeout="1000") Message
+        tabs(default-active-key="1")
+          tab-panel(tab="foo")
+            div Tab-1
+          tab-panel(tab="bar")
+            div Tab-2
+          tab-panel(tab="baz")
+            div Tab-3
+
 </template>
 
 <script>
 import {LayoutGlobal, LayoutGlobalHeader, LayoutGlobalFooter, LayoutGlobalSidebar, LayoutGlobalSection, LayoutRow, LayoutCol
-  , FitButton, ButtonGroup, FitInput, Modal, Pagination, PaginationFull, Message} from './components/index.js'
+  , FitButton, ButtonGroup, FitInput, Modal, Pagination, PaginationFull, Message, Tabs, TabPanel} from './components/index.js'
 
 export default {
   components: {
@@ -51,7 +59,9 @@ export default {
     modal: Modal,
     pagination: Pagination,
     paginationFull: PaginationFull,
-    message: Message
+    message: Message,
+    tabs: Tabs,
+    tabPanel: TabPanel
   },
   data () {
     return {

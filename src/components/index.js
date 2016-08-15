@@ -12,6 +12,8 @@ import Modal from './view/modal.vue'
 import Pagination from './view/pagination.vue'
 import PaginationFull from './view/pagination-full.vue'
 import Message from './view/message.vue'
+import Tabs from './navigation/tabs.vue'
+import TabPanel from './navigation/tab-panel.vue'
 
 export {LayoutGlobal}
 export {LayoutGlobalHeader}
@@ -27,6 +29,8 @@ export {Modal}
 export {Pagination}
 export {PaginationFull}
 export {Message}
+export {Tabs}
+export {TabPanel}
 
 export default {
   LayoutGlobal: LayoutGlobal,
