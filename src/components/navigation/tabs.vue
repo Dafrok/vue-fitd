@@ -1,6 +1,7 @@
 <template lang="jade">
 div.fit-tabs
-  div.title-container(:class="moveBarClassnames", :style="moveBarStyle")
+  div.title-container(el:"title-container")
+    div(:class="moveBarClassnames", :style="moveBarStyle")
     div.title-item(v-for="tab of tabs", @click="changeTab($index)", v-text="tab.titleContent", :class="{active: activeKey == $index}")
   div.content-container
     slot
@@ -10,7 +11,12 @@ export default {
   props: ['default-active-key'],
   data () {
     return {
-      activeKey: this.defaultActiveKey
+      activeKey: this.defaultActiveKey,
+      moveBarClassNames: {
+        'move-bar': true,
+        'forward': this.isForward,
+        'backward': !this.isForward
+      }
     }
   },
   computed: {
@@ -26,7 +32,11 @@ export default {
   },
   methods: {
     changeTab (index) {
-      this.activeKey = index
+      const previousTitleIndex = +this.activeKey
+      if (index !== previousTitleIndex) {
+        this.$emit('change')
+        this.activeKey = index
+      }
     }
   }
 }
