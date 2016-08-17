@@ -1,23 +1,24 @@
 <template lang="jade">
 div.fit-tabs
-  div.title-container(el:"title-container")
-    div(:class="moveBarClassnames", :style="moveBarStyle")
-    div.title-item(v-for="tab of tabs", @click="changeTab($index)", v-text="tab.titleContent", :class="{active: activeKey == $index}")
+  div.title-container(v-el:"title-container")
+    div.move-bar(:class="moveBarClassNames", :style="moveBarStyle")
+    div.title-item(v-for="tab of tabs", @click="changeTab($index)", v-text="tab.titleContent", :class="{active: activeKey == $index, [`title-item-${$index}`]: true}")
   div.content-container
     slot
 </template>
 <script>
+import Vue from 'vue'
 export default {
   props: ['default-active-key'],
   data () {
     return {
       activeKey: this.defaultActiveKey,
-      moveBarClassNames: {
-        'move-bar': true,
-        'forward': this.isForward,
-        'backward': !this.isForward
-      }
+      moveBarStyle: {},
+      isForward: null
     }
+  },
+  ready () {
+    Vue.nextTick(() => this.changeTab(this.activeKey))
   },
   computed: {
     tabs () {
@@ -28,11 +29,27 @@ export default {
         }
       }
       return result
+    },
+    moveBarClassNames () {
+      return {
+        'forward': this.isForward,
+        'backward': !this.isForward
+      }
     }
   },
   methods: {
     changeTab (index) {
       const previousTitleIndex = +this.activeKey
+      const $titleContainer = this.$els.titleContainer
+      const $titleItem = $titleContainer.querySelector(`.title-item-${index}`)
+      const currentLeft = $titleItem.offsetLeft
+      this.activeKey = index
+      this.isForward = index > previousTitleIndex
+      console.log(index, previousTitleIndex)
+      this.moveBarStyle = {
+        left: currentLeft + 'px',
+        right: parseFloat(global.getComputedStyle($titleContainer).width) - +currentLeft - parseFloat(global.getComputedStyle($titleItem).width) - 20 + 'px'
+      }
       if (index !== previousTitleIndex) {
         this.$emit('change')
         this.activeKey = index
