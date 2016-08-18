@@ -1,5 +1,5 @@
 <template lang="jade">
-div.fit-message(v-if="showMessage", :class="type")
+div.fit-message(v-if="show", :class="type")
   div.m-layer.z-show
     table
       tbody
@@ -12,19 +12,32 @@ div.fit-message(v-if="showMessage", :class="type")
 
 <script>
 export default {
-  props: ['show', 'timeout', 'type'],
+  // props: ['show', 'timeout', 'type'],
+  props: {
+    show: {
+      twoWay: true,
+      default: false
+    },
+    timeout: {
+      default: 5000
+    },
+    type: {
+      default: 'info'
+    }
+  },
   data () {
     return {
-      showMessage: this.show,
+      // showMessage: this.show,
       timeoutId: null
     }
   },
   watch: {
     show: function (newVal, oldVal) {
       if (newVal) {
-        this.showMessage = true
+        // this.showMessage = true
         this.timeoutId = setTimeout(() => {
-          this.showMessage = false
+          // this.showMessage = false
+          this.show = false
           this.$emit('close')
         }, this.timeout || 5000)
       } else {

@@ -29,7 +29,7 @@ layout-global
         fit-button(type="primary", @click="openModal") Open Modal
         pagination(:default-page="page", :loading="paginationLoading", @change="changePage")
         span(v-text="page")
-        message(:show="showMessage", type="info", timeout="1000") Message
+        message(:show.sync="showMessage", type="info", timeout="1000") Message
         tabs(default-active-key="1")
           tab-panel(tab="foo")
             div Tab-1

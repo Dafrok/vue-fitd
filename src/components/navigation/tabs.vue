@@ -45,7 +45,6 @@ export default {
       const currentLeft = $titleItem.offsetLeft
       this.activeKey = index
       this.isForward = index > previousTitleIndex
-      console.log(index, previousTitleIndex)
       this.moveBarStyle = {
         left: currentLeft + 'px',
         right: parseFloat(global.getComputedStyle($titleContainer).width) - +currentLeft - parseFloat(global.getComputedStyle($titleItem).width) - 20 + 'px'
