@@ -11,6 +11,7 @@ layout-global
       layout-col(span="8")
         fit-input(label="This is placeholder.", highlight, direction="left")
         modal(:show="showModal", @ok="closeModal", @cancel="closeModal", backdrop-click-to-close, title="Title") text
+        fit-image(src="https://www.baidu.com/img/baidu_jgylogo3.gif")
       layout-col(span="8")
         fit-button(active) default
         fit-button(type="primary", rounded, loading) primary
@@ -42,7 +43,7 @@ layout-global
 
 <script>
 import {LayoutGlobal, LayoutGlobalHeader, LayoutGlobalFooter, LayoutGlobalSidebar, LayoutGlobalSection, LayoutRow, LayoutCol
-  , FitButton, ButtonGroup, FitInput, Modal, Pagination, PaginationFull, Message, Tabs, TabPanel} from './components/index.js'
+  , FitButton, ButtonGroup, FitInput, Modal, Pagination, PaginationFull, Message, Tabs, TabPanel, FitImage} from './components/index.js'
 
 export default {
   components: {
@@ -61,7 +62,8 @@ export default {
     paginationFull: PaginationFull,
     message: Message,
     tabs: Tabs,
-    tabPanel: TabPanel
+    tabPanel: TabPanel,
+    fitImage: FitImage
   },
   data () {
     return {

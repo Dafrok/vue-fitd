@@ -14,6 +14,7 @@ import PaginationFull from './view/pagination-full.vue'
 import Message from './view/message.vue'
 import Tabs from './navigation/tabs.vue'
 import TabPanel from './navigation/tab-panel.vue'
+import FitImage from './view/image.vue'
 
 export {LayoutGlobal}
 export {LayoutGlobalHeader}
@@ -31,6 +32,7 @@ export {PaginationFull}
 export {Message}
 export {Tabs}
 export {TabPanel}
+export {FitImage}
 
 export default {
   LayoutGlobal: LayoutGlobal,
