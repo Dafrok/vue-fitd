@@ -1,15 +1,16 @@
 <template lang="jade">
-div.fit-tabs
+div.fit-tabs(:class="{retro: this.type === 'retro'}")
   div.title-container(v-el:"title-container")
     div.move-bar(:class="moveBarClassNames", :style="moveBarStyle")
-    div.title-item(v-for="tab of tabs", @click="changeTab($index)", v-text="tab.titleContent", :class="{active: activeKey == $index, [`title-item-${$index}`]: true}")
+    div.title-item(v-for="tab of tabs", @click="changeTab($index)", :class="{active: activeKey == $index, [`title-item-${$index}`]: true}")
+      div.tab-bar-content(v-text="tab.titleContent")
   div.content-container
     slot
 </template>
 <script>
 import Vue from 'vue'
 export default {
-  props: ['default-active-key'],
+  props: ['default-active-key', 'type'],
   data () {
     return {
       activeKey: this.defaultActiveKey,
@@ -32,8 +33,8 @@ export default {
     },
     moveBarClassNames () {
       return {
-        'forward': this.isForward,
-        'backward': !this.isForward
+        forward: this.isForward,
+        backward: !this.isForward
       }
     }
   },

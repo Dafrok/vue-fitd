@@ -31,7 +31,7 @@ layout-global
         pagination(:default-page="page", :loading="paginationLoading", @change="changePage")
         span(v-text="page")
         message(:show.sync="showMessage", type="info", timeout="1000") Message
-        tabs(default-active-key="1")
+        tabs(default-active-key="1", type="retro")
           tab-panel(tab="foo")
             div Tab-1
           tab-panel(tab="bar")
