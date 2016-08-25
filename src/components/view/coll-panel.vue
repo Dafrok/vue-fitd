@@ -1,15 +1,22 @@
 <template lang="jade">
-div.fit-collapse-coll-panel
+div.fit-collapse-coll-panel.panel.panel-default
   div.panel-heading(@click="handleClick")
-    i(:class="rightChevronClass", style="margin-right: 5px", v-text="header")
-  div(:class="panelCollapseClass", :style="contentContainerStyle")
+    i.fa.fa-chevron-right(:class="{rotate: this.active}", style="margin-right: 5px", v-text="header")
+  div.panel-collapse.collapse.in(:class="{show: this.active}", :style="contentContainerStyle")
     div(data-fit-coll-content)
       slot
 </template>
 
 <script>
 export default {
-  props: ['default-value', 'header']
+  props: ['default-value', 'header'],
+  data () {
+    return {
+      toggleTimeout: null
+    }
+  }
+  computed: {
+  }
 }
 </script>
 
